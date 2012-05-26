@@ -1,6 +1,0 @@
-import math
-
-# think permutations
-
-n=20
-print factorial(2*n)/factorial(n)/factorial(n)
