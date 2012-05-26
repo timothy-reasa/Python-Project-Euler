@@ -1,0 +1,10 @@
+import math
+
+def sumDigitsFactorial(x):
+    fact = math.factorial(x)
+    sumDigits = 0
+    for c in str(fact):
+	sumDigits += int(c)
+    return sumDigits
+
+print sumDigitsFactorial(100)

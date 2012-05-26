@@ -1,0 +1,31 @@
+def isLeap(x):
+    return x % 4 and (x % 100 != 0 or x% 400 == 0)
+
+def iterateMonths(currentDay, monthsList):
+    count = 0
+    for month in monthsList:
+	if currentDay == 0:
+	    count += 1
+	currentDay += month
+	currentDay = currentDay % 7
+    return count
+
+
+dayOfWeek = 2	# 1 Jan 1901 was a Tuesday
+daysInWeek = 7
+monthsInLeap = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+monthsInYear = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+daysInLeap = 366
+daysInYear = 365
+
+count = 0
+for year in range(1901, 2001):
+    if isLeap(year):
+	count += iterateMonths(dayOfWeek, monthsInLeap)
+	dayOfWeek += daysInLeap
+    else:
+	count += iterateMonths(dayOfWeek, monthsInYear)
+	dayOfWeek += daysInYear
+    dayOfWeek = dayOfWeek % 7
+
+print count

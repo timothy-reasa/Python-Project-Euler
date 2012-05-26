@@ -1,0 +1,17 @@
+import math
+
+def numfactors(x):
+    count = 1
+    for i in range (1,int(math.sqrt(x))):
+ 	if x % i == 0:
+	    count += 1
+    print count
+    return count
+
+triangle = 1
+triangleSum = 0
+while numfactors(triangleSum) < 500:
+    triangleSum += triangle
+    triangle += 1
+
+print triangleSum
