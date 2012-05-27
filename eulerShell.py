@@ -77,6 +77,9 @@ while cont:
             except Exception, e:
 		print 'An exception was raised during execution:'
 		print_exc()
+	    except SyntaxError, e:
+		print 'A syntax issue was discovered during execution:'
+		print_exc()
 
     
 print "Thank you for using the Euler Shell.  Have a splendid day."

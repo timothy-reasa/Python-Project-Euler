@@ -31,8 +31,11 @@ def solve(self):
     finalSum = 0
     for i in range (3, upperLimit):
         partialSum = 0
-        for digit in str(i):
-            partialSum += fact[int(digit)]
+	temp = i
+	while temp != 0:
+	    partialSum += fact[temp % 10]
+	    temp = temp / 10
+
         if partialSum == i:
             finalSum += i
 
