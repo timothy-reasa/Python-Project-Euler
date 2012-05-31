@@ -4,9 +4,10 @@
 #
 # Project Euler Problem 38
 # found online at projecteuler.net/problem=38
-# Solution by Timothy Reasa
 #
 ###############################################################################
+
+from __future__ import division
 
 limit = 1000
 description = \
@@ -18,22 +19,58 @@ description = \
 def display(self):
     return description
 
+
+###############################################################################
+#
+# Naive solution by Timothy Reasa
+#
+# def solve(self):
+#     maxSoln = 0
+#     maxP = 0
+#     for p in range(limit+1):
+# 	numSoln = 0
+#         for a in range(1, p-1):
+# 	    for b in range(1, p-a-1):
+# 		c = p - a - b
+# 		if c*c == a*a + b*b:
+# 		    numSoln += 1
+# 	if numSoln > maxSoln:
+# 	    maxP = p
+# 	    maxSoln = numSoln
+#  
+#     return maxP
+# 
+###############################################################################
+
+###############################################################################
+#
+# Optimized solution based on mathematics observed by rayfil
+#
+# Key realization:
+# Because c^2 = a^2 + b^2, P = a + b + c will always be even.
+#
+# Because c = P - b - a, we have a^2 + b^2 = P^2+a^2+b^2 - 2Pa - 2Pb + 2ab.
+# We can solve this for b = P(P-2a) / 2(P-a)
+#
+###############################################################################
+
 def solve(self):
     maxSoln = 0
     maxP = 0
-    for p in range(limit+1):
-	numSoln = 0
-        for a in range(1, p-1):
-	    for b in range(1, p-a-1):
-		c = p - a - b
-		if c*c == a*a + b*b:
-		    numSoln += 1
-	if numSoln > maxSoln:
+    for p in range(2, limit, 2):
+	counter = 0
+        for a in range(limit):
+	    b1 = p*(p-2*a) / (2*(p-a))
+	    b2 = p*(p-2*a) // (2*(p-a))
+	    if a >= b1:
+		break
+	    elif b1-b2 < .000001:
+		counter += 1
+        if counter > maxSoln:
+	    maxSoln = counter
 	    maxP = p
-	    maxSoln = numSoln
- 
-    return maxP
 
+    return maxP
 
 ###############################################################################
 # 
