@@ -4,6 +4,7 @@
 #
 # Project Euler Problem 36
 # found online at projecteuler.net/problem=36
+# Solution by Timothy Reasa
 #
 ###############################################################################
 
