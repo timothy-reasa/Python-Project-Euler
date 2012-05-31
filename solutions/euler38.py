@@ -36,20 +36,46 @@ def isPandigital9(n):
 	    return False
     return True
 
+###############################################################################
+#
+# Naive solution by Timothy Reasa
+#
+# def solve(self):
+#    maxPan = 0
+#     i = 1
+#     while len(str(i) + str(2*i)) < 10: # must be product of at least 2 mults
+#         temp = ''
+# 	j = 1
+# 	while len(temp) < 9:
+# 	    temp += str(j*i)
+# 	    j += 1
+#         if temp > maxPan and isPandigital9(temp):
+# 	    maxPan = temp
+#   	i += 1
+#  
+#     return maxPan
+#
+###############################################################################
+
+###############################################################################
+#
+# Optimized solution by Timothy Reasa
+#
+# Key realization:
+# The maximum integer that could produce a 9 digit pandigital is 9876, because
+# we need a 4-digit number that takes 5 digits when doubled.  Since these
+# digits are the most significant in the resulting sum of products, we can
+# start there and count down until we find a suitable number.
+#
+###############################################################################
+
 def solve(self):
     maxPan = 0
-    i = 1
-    while len(str(i) + str(2*i)) < 10:	# must be product of at least 2 mults
-        temp = ''
-	j = 1
-	while len(temp) < 9:
-	    temp += str(j*i)
-	    j += 1
-        if temp > maxPan and isPandigital9(temp):
-	    maxPan = temp
-  	i += 1
+    i = 9876	# maximum 4-digit number that could produce a pandigital
+    while not isPandigital9(str(i) + str(2*i)):
+        i -= 1
  
-    return maxPan
+    return int(str(i) + str(2*i))
 
 
 ###############################################################################
