@@ -41,7 +41,7 @@ def toBinary(n):
 
 def solve(self):
     totalSum = 0
-    for i in range(1, limit):
+    for i in range(1, limit, 2):	# odd numbers aren't binary palindromes
         if isPalindrome(i) and isPalindrome(toBinary(i)):
 	    totalSum += i
  
