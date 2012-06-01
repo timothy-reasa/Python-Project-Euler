@@ -60,11 +60,10 @@ def solve(self):
     for p in range(2, limit, 2):
 	counter = 0
         for a in range(limit):
-	    b1 = p*(p-2*a) / (2*(p-a))
-	    b2 = p*(p-2*a) // (2*(p-a))
-	    if a >= b1:
+	    b = p*(p-2*a) / (2*(p-a))
+	    if a >= b:
 		break
-	    elif b1-b2 < .000001:
+	    elif b == int(b):
 		counter += 1
         if counter > maxSoln:
 	    maxSoln = counter
