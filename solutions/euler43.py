@@ -43,6 +43,7 @@ def solve(self):
 	    total += int(filter(str.isdigit, repr(p)))
     return total
 
+
 ###############################################################################
 # 
 # If executed as a script/not imported
