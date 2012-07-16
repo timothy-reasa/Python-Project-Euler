@@ -26,20 +26,6 @@ description = \
 def display(self):
     return description  
 
-def recursiveSolve(i, j, primeSet, sumThrough):
-    if i == j:
-	return (i, i)
-
-    if sumThrough[j] - sumThrough[i] in primeSet:
-	return (i, j)
-    
-    soln1 = recursiveSolve(i, j-1, primeSet, sumThrough)
-    soln2 = recursiveSolve(i+1, j, primeSet, sumThrough)
-    if soln1[1] - soln1[0] > soln2[1] - soln2[0]:
-	return soln1
-
-    return soln2
-	
 
 def solve(self):
     # create sieve
